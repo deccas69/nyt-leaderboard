@@ -64,27 +64,26 @@ const Leaderboard = () => {
   const winner = leaderboard.length > 0 ? leaderboard[0].player : null;
 
   return (
-    <div style={{ backgroundColor: "#111", color: "white", minHeight: "100vh", padding: "2rem" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏆 NYT Leaderboard</h1>
+    <div style={{ backgroundColor: "#111", color: "white", minHeight: "100vh", padding: "2rem 1rem", maxWidth: "100%" }}>
+      <h1 style={{ fontSize: "clamp(1.5rem, 5vw, 2.5rem)", marginBottom: "1rem", textAlign: "center" }}>🏆 NYT Leaderboard</h1>
 
-      <label>Select Date: </label>
+      <label style={{ display: "block", marginBottom: "0.5rem" }}>Select Date: </label>
       <input
         type="date"
         value={dateFilter}
         onChange={e => setDateFilter(e.target.value)}
-        style={{ marginBottom: "1rem", padding: "0.5rem", backgroundColor: "#222", color: "white", border: "1px solid #555" }}
+        style={{ width: "100%", maxWidth: "400px", marginBottom: "1.5rem", padding: "0.5rem", backgroundColor: "#222", color: "white", border: "1px solid #555" }}
       />
 
       {leaderboard.map(({ player, total, breakdown }, i) => (
-        <div key={player} style={{ marginBottom: "1.5rem", padding: "1rem", backgroundColor: "#1a1a1a", borderRadius: "1rem" }}>
-          <h2 style={{ marginBottom: "0.5rem" }}>{getPlayerName(player)} {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : ""}</h2>
-          <p style={{ fontSize: "1.25rem" }}>Total: <strong>{total}</strong></p>
+        <div key={player} style={{ marginBottom: "1.5rem", padding: "1rem", backgroundColor: "#1a1a1a", borderRadius: "1rem", width: "100%", maxWidth: "500px", marginLeft: "auto", marginRight: "auto" }}>
+          <h2 style={{ marginBottom: "0.5rem", fontSize: "1.25rem", textAlign: "center" }}>{getPlayerName(player)} {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : ""}</h2>
+          <p style={{ fontSize: "1rem", textAlign: "center" }}>Total: <strong>{total}</strong></p>
           <div>
             {breakdown.map(s => (
-              <div key={s.id} style={{ margin: "0.25rem 0", padding: "0.5rem", backgroundColor: getGameColor(s.game_id), borderRadius: "0.5rem", color: "#000" }}>
-                <strong>{s.game_id.toUpperCase()}</strong> — {s.score} pts
-                {s.bonus && " ⭐"}
-                {s.hints > 0 && ` 💡-${s.hints}`}
+              <div key={s.id} style={{ margin: "0.25rem 0", padding: "0.5rem", backgroundColor: getGameColor(s.game_id), borderRadius: "0.5rem", color: "#000", fontWeight: "bold", display: "flex", justifyContent: "space-between" }}>
+                <span>{s.game_id.toUpperCase()}</span>
+                <span>{s.score} pts {s.bonus && "⭐"} {s.hints > 0 && `💡-${s.hints}`}</span>
               </div>
             ))}
           </div>
