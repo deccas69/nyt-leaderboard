@@ -1,0 +1,22 @@
+.score-input-container.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  min-height: 100vh;
+}
+
+select, textarea, input[type="date"], button {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  font-family: monospace;
+}
