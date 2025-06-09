@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ScoreInput from "./components/ScoreInput";
 import Leaderboard from "./components/Leaderboard";
 
@@ -7,8 +7,8 @@ function App() {
   return (
     <Router>
       <nav style={{ backgroundColor: "#222", padding: "1rem" }}>
-        <a href="/" style={{ marginRight: "1rem", color: "limegreen" }}>Submit Score</a>
-        <a href="/leaderboard" style={{ color: "gold" }}>View Leaderboard</a>
+        <Link to="/" style={{ marginRight: "1rem", color: "limegreen" }}>Submit Score</Link>
+        <Link to="/leaderboard" style={{ color: "gold" }}>View Leaderboard</Link>
       </nav>
 
       <Routes>
